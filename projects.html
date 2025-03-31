@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>projects</title>
+    <link rel="stylesheet" href="projects.css"> <!-- ربط ملف CSS خارجي -->
+</head>
+
+<style>
+/* تنسيق الصفحة العامة */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(#03151ce2, #6d8f87, #291401); /* خلفية متدرجة */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* تنسيق الآلة الحاسبة */
+.calculator {
+  width: 250px;
+  background: rgb(7, 0, 0);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(231, 233, 226, 0.893); /* تأثير الظل */
+}
+
+/* تنسيق شاشة الآلة الحاسبة */
+.display {
+  width: 100%;
+  height: 50px;
+  font-size: 1.5px;
+  text-align: right;
+  padding: 10px;
+  border: none;
+  position: relative;
+  right:10px;
+  background: #e6dede;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+/* تنسيق أزرار الآلة الحاسبة */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr); /* توزيع الأزرار على 4 أعمدة */
+  gap: 10px;
+}
+
+/* الأزرار العامة */
+button {
+  padding: 15px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  background: #4a4a4a;
+}
+
+/* تأثير عند تمرير الماوس فوق الأزرار */
+button:hover {
+  background: #e9cf0e;
+}
+
+/* تنسيق زر العمليات الحسابية */
+.c {
+  background: #c57d0a;
+}
+
+/* تنسيق زر الأس والأس النسبة المئوية */
+.r {
+  background: #9b9b9b;
+}
+
+/* تنسيق زر يساوي */
+.equal {
+  grid-column: span 2; /* جعله يمتد على عمودين */
+  background: #d48d0a;
+}
+
+.equal:hover {
+  background: #49fd02;
+}
+
+/* تنسيق زر مسح الإدخال */
+.clear {
+  background: #8a8a8a;
+}
+
+.clear:hover {
+  background: #ec0b56;
+}
+
+/* زر إظهار وإخفاء القائمة الجانبية */
+#toggle-btn {
+    width: 40px;
+    height: 40px;
+    background: #0f0e0e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    left: 20px; 
+    top: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* قائمة التنقل الجانبية */
+#menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    position: fixed;
+    left: 20px;
+    top: 70px;
+    background: rgba(243, 238, 238, 0.8);
+    border-radius: 20px;
+}
+
+/* عند تمرير الماوس فوق الزر، يتم عرض القائمة */
+#btn:hover #menu {
+    max-height: 200px; 
+    padding: 15px; 
+}
+
+/* تنسيق روابط القائمة الجانبية */
+.bt {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    background: #0b0b0b;
+    margin: 5px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.bt:hover {
+    background: #a01414;
+}
+
+/* حركة الاهتزاز */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
+
+/* تنسيق العنوان المتحرك */
+.h {
+    position: relative;
+    right: 700px;
+    border-radius: 20%;
+    background-color: #b2cd50;
+    padding: 10px;
+    animation: shake 2s ease-in-out infinite;
+}
+</style>
+
+<body>
+  <!-- حاوية الآلة الحاسبة-->
+  <div class="calculator">
+    <input type="text" class="display" id="display" disabled> <!-- شاشة الإدخال -->
+    <div class="buttons">
+        <button onclick="clearDisplay()" class="clear">AC</button>
+        <button onclick="appendValue('^')" class="r">^</button>
+        <button onclick="appendValue('%')" class="r">%</button>
+        <button onclick="appendValue('/')" class="c">÷</button>
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('*')" class="c">x</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('-')" class="c">-</button>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('+')" class="c">+</button>
+        <button onclick="appendValue('0')" class="zero">0</button>
+        <button onclick="appendDecimal()">.</button>
+        <button onclick="calculateResult()" class="equal">=</button>
+    </div>
+  </div>
+
+  <script>
+    // دالة لإضافة القيم إلى شاشة الإدخال
+    function appendValue(value) {
+        document.getElementById('display').value += value;
+    }
+
+    // دالة لمسح شاشة الإدخال
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    // دالة لإضافة الفاصلة العشرية بطريقة صحيحة
+    function appendDecimal() {
+        let display = document.getElementById('display').value;
+        if (!display || /[\+\-\*\/\^\%]$/.test(display) || display.split(/[\+\-\*\/\^\%]/).pop().includes('.')) {
+            return;
+        }
+        document.getElementById('display').value += '.';
+    }
+
+    // دالة لحساب النتيجة
+    function calculateResult() {
+        try {
+            let expression = document.getElementById('display').value;
+
+            // تحويل الأس إلى دالة JavaScript Math.pow
+            expression = expression.replace(/(\d+)\^(\d+)/g, (_, base, exp) => `Math.pow(${base},${exp})`);
+
+            // تحويل النسبة المئوية إلى الصيغة الصحيحة
+            expression = expression.replace(/(\d+)%/g, (_, num) => `(${num}/100)`);
+
+            // تقييم المعادلة وحساب النتيجة
+            document.getElementById('display').value = Function(`'use strict'; return (${expression})`)();
+        } catch {
+            document.getElementById('display').value = 'error';
+        }
+    }
+  </script>
+
+  <!-- قائمة التنقل الجانبية -->
+  <div id="btn">
+      <div id="toggle-btn">⬅</div>
+      <div id="menu">
+          <a class="bt" href="saga.html">Home</a>
+          <a class="bt" href="skills.html">Skills</a>
+          <a class="bt" href="projects.html">Projects</a>
+          <a class="bt" href="contact.html">Contact</a>
+      </div>
+  </div> 
+
+  <h1 class="h">My project➡</h1>
+</body>
+</html>

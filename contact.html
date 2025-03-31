@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(#0a3a33e2, #1f3a3c, #495c60f0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* زر القائمة الجانبية */
+        #toggle-btn {
+            width: 40px;
+            height: 40px;
+            background: #0f0e0e;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: fixed;
+            left: 20px; 
+            top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        /* القائمة الجانبية مخفية افتراضيًا */
+        #menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            position: fixed;
+            left: 20px;
+            top: 70px;
+            background: rgba(243, 238, 238, 0.8);
+            border-radius: 20px;
+        }
+
+        /* إظهار القائمة عند تمرير الماوس */
+        #btn:hover #menu {
+            max-height: 200px; 
+            padding: 15px; 
+        }
+
+        /* تصميم روابط القائمة */
+        .bt {
+            display: block;
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            background: #0b0b0b;
+            margin: 5px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .bt:hover {
+            background: #a01414;
+        }
+
+        /* تصميم أزرار الاتصال */
+        .contact-buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-btn {
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .telegram { background-color: #0088cc; }
+        .email { background-color: #d44638; }
+        
+        .contact-btn:hover { opacity: 0.8; }
+
+    </style>
+</head>
+<body>
+
+    <div id="btn">
+        <div id="toggle-btn">⬅</div>
+        <div id="menu">
+            <a class="bt" href="saga.html">Home</a>
+            <a class="bt" href="skills.html">Skills</a>
+            <a class="bt" href="projects.html">Projects</a>
+            <a class="bt" href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <h2>Contact Us</h2>
+
+    <div class="contact-buttons">
+        <a href="https://t.me/sage_221" class="contact-btn telegram">Telegram</a>
+        <a href="mailto:m.douro.inf@lagh-univ.dz" class="contact-btn email">Email</a>
+    </div>
+
+</body>
+</html>

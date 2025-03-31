@@ -1,0 +1,131 @@
+body { 
+    background: linear-gradient( #165d71, #2a9c97, #090000);
+    background-size: 300% 300%;
+    
+font-family: Arial, Helvetica, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 55vh;
+overflow: hidden;
+
+   
+}
+
+#btn { background: linear-gradient(#05ec97, #047272, #09b1e4); 
+    height: 600px;
+    width: 0px;
+    border-radius: 900px;
+    padding: 40px; 
+    font-size: 16px;
+    position: relative;
+    left: -1150px;
+    bottom: -149px;
+    border: 2px solid black; 
+    }
+
+
+.bt {
+  display: inline-block; 
+    width: 42px; 
+    padding: 15px;
+    background: #040207;
+    color: rgb(243, 242, 242);
+    text-align: center; 
+    border-radius: 25%; 
+    font-size: 15px;
+    position: relative;
+    right: 35px;
+    text-decoration: none;
+ 
+}
+
+.bt:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to left,#061e7c, #d35af1fd); 
+}
+@keyframes colorChange {
+  0% { filter: brightness(1) contrast(1); } 
+  50% { filter: brightness(1.1) contrast(1.1) hue-rotate(20deg); } 
+  100% { filter: brightness(1) contrast(1); } 
+}
+
+.img {
+  animation: colorChange 3s infinite alternate; 
+}
+
+
+.img {
+  
+    width: 30%;
+    height: 400%;
+    box-shadow: 0px 4px 12px rgba(170, 34, 205, 0.916), 
+    0px 12px 30px rgba(31, 98, 231, 0.877), 
+    0px 24px 60px rgba(5, 22, 29, 0.995);
+    max-height: 470px; /* يمكنك تعديل الارتفاع */
+    object-fit: cover; /* يضمن أن الصورة لا تتمدد بشكل غير متناسق */
+    border-radius: 35%;
+    position: relative;
+left: 200px;
+bottom: -100px;
+  }
+  
+  #h1{
+
+    color: #000;
+    font-size: 80px; 
+    font-weight: bold; 
+      }
+
+  
+  #h11{
+    
+color: #2d0946;
+border-radius: 30px;
+padding: 5px;
+animation: fadeInOut 3s infinite; 
+font-size: 80px;
+
+  }
+
+#h1, #h11 {
+        display: inline;
+    }
+#div{
+    width: 40%;
+    height: 0%;
+position: relative;
+right: -180px;
+
+}
+#p{
+font-size: 25px;
+
+
+}
+#p2{
+
+ 
+position: relative;
+left: 50px;
+bottom: -500px;
+
+}
+@keyframes words {
+  0% { content: "Douro"; }
+  10% { content: "D"; }
+  20% { content: "Do"; }
+  30% { content: "Dou"; }
+  40% { content: "Dour"; }
+  50% { content: "Douro"; }
+  70% { content: "|"; }
+  100% { content: "Douro|"; }
+}
+
+#h11::before {
+  content: "Douro"; 
+  animation: words 3s infinite alternate;
+}
+
+
+
